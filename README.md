@@ -21,3 +21,9 @@
     - ###### https://tychejin.tistory.com/13
   - ##### [Spring] 게시판 만들기(5) - Spring MVC 프로젝트 생성
     - ###### https://tychejin.tistory.com/14
+  - ##### [Spring] 게시판 만들기(6) - MySQL 다운로드 및 설치하기
+    - ###### https://tychejin.tistory.com/15
+  - ##### [Spring] 게시판 만들기(7) - MySQL SCHEMA 및 TALBE 생성하기
+    - ###### https://tychejin.tistory.com/16
+  - ##### [Spring] 게시판 만들기(8) - 디렉토리 구조 및 설정 파일 변경(web.xml, *-context.xml)
+    - ###### https://tychejin.tistory.com/17
