@@ -27,3 +27,5 @@
     - ###### https://tychejin.tistory.com/16
   - ##### [Spring] 게시판 만들기(8) - 디렉토리 구조 및 설정 파일 변경(web.xml, *-context.xml)
     - ###### https://tychejin.tistory.com/17
+  - ##### [Spring] 게시판 만들기(9) - MySQL 연동
+    - ###### https://tychejin.tistory.com/19
