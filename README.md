@@ -29,5 +29,5 @@
     - ###### https://tychejin.tistory.com/17
   - ##### [Spring] 게시판 만들기(9) - MySQL 연동
     - ###### https://tychejin.tistory.com/19
-  - ##### [Spring] 게시판 만들기(10) - log4j->logback으로 변경
+  - ##### [Spring] 게시판 만들기(10) - log4j->logback으로 변경.
     - ###### https://tychejin.tistory.com/20
