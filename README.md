@@ -33,5 +33,5 @@
     - ###### https://tychejin.tistory.com/20
   - ##### [Spring] 게시판 만들기(11) - 인터셉터(Interceptor) 설정
     - ###### https://tychejin.tistory.com/21
-  - ##### [Spring] 게시판 만들기(12) - Mybatis 연동
+  - ##### [Spring] 게시판 만들기(12) - Mybatis 연동 테스트
     - ###### https://tychejin.tistory.com/22
