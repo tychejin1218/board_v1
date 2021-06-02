@@ -37,3 +37,5 @@
     - ###### https://tychejin.tistory.com/22
   - ##### [Spring] 게시판 만들기(13) - mapper 및 json 설정
     - ###### https://tychejin.tistory.com/23
+  - ##### [Spring] 게시판 만들기(14) - 게시글 조회(SELECT)
+    - ###### https://tychejin.tistory.com/24
