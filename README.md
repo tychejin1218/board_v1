@@ -39,3 +39,5 @@
     - ###### https://tychejin.tistory.com/23
   - ##### [Spring] 게시판 만들기(14) - 게시글 조회(SELECT)
     - ###### https://tychejin.tistory.com/24
+  - ##### [Spring] 게시판 만들기(15) - 게시글 등록(INSERT), 수정(UPDATE), 삭제(DELETE), 상세 조회(SELECT)
+    - ###### https://tychejin.tistory.com/25
