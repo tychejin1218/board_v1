@@ -8,34 +8,35 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
-	<!-- Enables the Spring MVC @Controller programming model -->
-	<annotation-driven />
-
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
-	<resources mapping="/css/**" location="/css/" />
-	<resources mapping="/img/**" location="/img/" />
-	<resources mapping="/js/**" location="/js/" />
-
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
-		<beans:property name="order"  value="1" />
-	</beans:bean>
-	
-	<context:component-scan base-package="com.spring.board" />
-	
-	<mvc:interceptors>
+ 
+    <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+    
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <annotation-driven />
+ 
+    <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the $/resources directory -->
+    <resources mapping="/resources/**" location="/resources/" />
+    <resources mapping="/css/**" location="/css/" />
+    <resources mapping="/img/**" location="/img/" />
+    <resources mapping="/js/**" location="/js/" />
+    
+    <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+    <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <beans:property name="prefix" value="/WEB-INF/views/" />
+        <beans:property name="suffix" value=".jsp" />
+    </beans:bean>
+    
+    <context:component-scan base-package="com.spring.board" use-default-filters="false"> 
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" /> 
+    </context:component-scan>
+ 
+    <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <beans:bean id="loggerInterceptor" class="com.spring.board.common.LoggerInterceptor"></beans:bean>
         </mvc:interceptor>
     </mvc:interceptors>
-	
-	<beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
-	
+    
+    <beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+ 
 </beans:beans>
