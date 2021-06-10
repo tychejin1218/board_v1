@@ -18,6 +18,12 @@ public class BoardDao {
  
     private static final String NAMESPACE = "com.spring.board.boardMapper";
  
+    /** 게시판 - 목록 수 */
+	public int getBoardCnt(BoardForm boardForm) throws Exception {
+
+		return sqlSession.selectOne(NAMESPACE + ".getBoardCnt", boardForm);
+	}
+	
     /** 게시판 - 목록 조회  */
     public List<BoardDto> getBoardList(BoardForm boardForm) throws Exception {
         
