@@ -86,7 +86,7 @@ public class BoardService {
         
         insertCnt = boardDao.insertBoard(boardForm);
         
-        insertCnt = boardDao.insertBoardFail(boardForm);
+        //insertCnt = boardDao.insertBoardFail(boardForm);
  
         if (insertCnt > 0) {
             boardDto.setResult("SUCCESS");
