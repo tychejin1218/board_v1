@@ -43,3 +43,5 @@
     - ###### https://tychejin.tistory.com/25
   - ##### [Spring] 게시판 만들기(16) - 트랜잭션(Transaction) 설정
     - ###### https://tychejin.tistory.com/26
+  - ##### [Spring] 게시판 만들기(17) - 페이징(Paging) 처리
+    - ###### https://tychejin.tistory.com/27
