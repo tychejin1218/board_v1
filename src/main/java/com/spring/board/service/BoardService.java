@@ -14,7 +14,7 @@ import com.spring.board.dto.CommonDto;
 import com.spring.board.form.BoardForm;
 import com.spring.board.form.CommonForm;
  
-@Service()
+@Service
 public class BoardService {
  
     @Autowired
@@ -84,6 +84,9 @@ public class BoardService {
  
         int insertCnt = 0;
         
+        int boardReRef = boardDao.getBoardReRef(boardForm);
+		boardForm.setBoard_re_ref(boardReRef);
+		
         insertCnt = boardDao.insertBoard(boardForm);
         
         //insertCnt = boardDao.insertBoardFail(boardForm);
@@ -128,4 +131,31 @@ public class BoardService {
  
         return boardDto;
     }
+    
+    /** 게시판 - 답글 등록 */
+	public BoardDto insertBoardReply(BoardForm boardForm) throws Exception {
+
+		BoardDto boardDto = new BoardDto();
+
+		BoardDto boardReplayInfo = boardDao.getBoardReplyInfo(boardForm);
+
+		boardForm.setBoard_seq(boardReplayInfo.getBoard_seq());
+		boardForm.setBoard_re_lev(boardReplayInfo.getBoard_re_lev());
+		boardForm.setBoard_re_ref(boardReplayInfo.getBoard_re_ref());
+		boardForm.setBoard_re_seq(boardReplayInfo.getBoard_re_seq());
+
+		int insertCnt = 0;
+
+		insertCnt += boardDao.updateBoardReSeq(boardForm);
+
+		insertCnt += boardDao.insertBoardReply(boardForm);
+
+		if (insertCnt > 0) {
+			boardDto.setResult("SUCCESS");
+		} else {
+			boardDto.setResult("FAIL");
+		}
+
+		return boardDto;
+	}
 }
