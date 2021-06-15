@@ -53,57 +53,74 @@
     
     /** 게시판 - 목록 조회  콜백 함수 */
     function getBoardListCallback(obj){
+     
+        var state = obj.state;
         
-		var state = obj.state;		
-		if(state == "SUCCESS"){
-			
-			var data = obj.data;			
-			var list = data.list;
-			var listLen = list.length;		
-			var totalCount = data.totalCount;
-			var pagination = data.pagination;
-	                
-	        var str = "";
-	        
-	        if(listLen >  0){
-	            
-	            for(var a=0; a<listLen; a++){
-	                
-	                var boardSeq		= list[a].board_seq; 
-	                var boardReRef      = list[a].board_re_ref; 
-	                var boardReLev      = list[a].board_re_lev; 
-	                var boardReSeq      = list[a].board_re_seq; 
-	                var boardWriter     = list[a].board_writer; 
-	                var boardSubject	= list[a].board_subject; 
-	                var boardContent    = list[a].board_content; 
-	                var boardHits       = list[a].board_hits;
-	                var delYn           = list[a].del_yn; 
-	                var insUserId       = list[a].ins_user_id;
-	                var insDate         = list[a].ins_date; 
-	                var updUserId       = list[a].upd_user_id;
-	                var updDate         = list[a].upd_date;
-	                
-	                str += "<tr>";
-	                str += "<td>"+ boardSeq +"</td>";
-	                str += "<td onclick='javascript:goBoardDetail("+ boardSeq +");' style='cursor:Pointer'>"+ boardSubject +"</td>";
-	                str += "<td>"+ boardHits +"</td>";
-	                str += "<td>"+ boardWriter +"</td>";    
-	                str += "<td>"+ insDate +"</td>";    
-	                str += "</tr>";
-	                
-	            } 
-	            
-	        } else {
-	            
-	            str += "<tr>";
-	            str += "<td colspan='5'>등록된 글이 존재하지 않습니다.</td>";
-	            str += "<tr>";
-	        }
-	        
-	        $("#tbody").html(str);
-			$("#total_count").text(totalCount);
-			$("#pagination").html(pagination);
-	    }
+        if(state == "SUCCESS"){
+            
+            var data = obj.data;            
+            var list = data.list;
+            var listLen = list.length;        
+            var totalCount = data.totalCount;
+            var pagination = data.pagination;
+                
+            var str = "";
+            
+            if(listLen >  0){
+                
+                for(var a=0; a<listLen; a++){
+                    
+                    var boardSeq        = list[a].board_seq; 
+                    var boardReRef      = list[a].board_re_ref; 
+                    var boardReLev      = list[a].board_re_lev; 
+                    var boardReSeq      = list[a].board_re_seq; 
+                    var boardWriter     = list[a].board_writer; 
+                    var boardSubject	= list[a].board_subject; 
+                    var boardContent    = list[a].board_content; 
+                    var boardHits       = list[a].board_hits;
+                    var delYn           = list[a].del_yn; 
+                    var insUserId       = list[a].ins_user_id;
+                    var insDate         = list[a].ins_date; 
+                    var updUserId       = list[a].upd_user_id;
+                    var updDate         = list[a].upd_date;
+                    
+                    str += "<tr>";
+                    str += "<td>"+ boardSeq +"</td>";
+                                        
+                    str += "<td onclick='javascript:goBoardDetail("+ boardSeq +");' style='cursor:Pointer'>";
+                    
+                    if(boardReLev > 0){
+                        
+                        for(var b=0; b<boardReLev; b++){
+                            
+                            str += "Re:";
+                        }
+                    }
+                    
+                    str += boardSubject +"</td>";
+                                        
+                    str += "<td>"+ boardHits +"</td>";
+                    str += "<td>"+ boardWriter +"</td>";    
+                    str += "<td>"+ insDate +"</td>";    
+                    str += "</tr>";
+                    
+                } 
+                
+            } else {
+                
+                str += "<tr>";
+                str += "<td colspan='5'>등록된 글이 존재하지 않습니다.</td>";
+                str += "<tr>";
+            }
+            
+            $("#tbody").html(str);
+            $("#total_count").text(totalCount);
+            $("#pagination").html(pagination);
+            
+        } else {
+            alert("관리자에게 문의하세요.");
+            return;
+        }        
     }
     
 </script>
