@@ -42,6 +42,12 @@ public class BoardDao {
         return sqlSession.selectOne(NAMESPACE + ".getBoardDetail", boardForm);
     }
     
+    /** 게시판 - 그룹 번호 조회 */
+	public int getBoardReRef(BoardForm boardForm) throws Exception {
+
+		return sqlSession.selectOne(NAMESPACE + ".getBoardReRef", boardForm);
+	}
+    
     /** 게시판 - 등록  */    
     public int insertBoard(BoardForm boardForm) throws Exception {
         return sqlSession.insert(NAMESPACE + ".insertBoard", boardForm);
@@ -63,4 +69,20 @@ public class BoardDao {
         
         return sqlSession.update(NAMESPACE + ".updateBoard", boardForm);
     }
+    
+    /** 게시판 - 답글 정보  조회 */
+	public BoardDto getBoardReplyInfo(BoardForm boardForm) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".getBoardReplyInfo", boardForm);
+	}
+	
+	/** 게시판 - 답글 순서 수정 */
+	public int updateBoardReSeq(BoardForm boardForm) throws Exception {
+
+		return sqlSession.update(NAMESPACE + ".updateBoardReSeq", boardForm);
+	}
+	
+	/** 게시판 - 답글 등록 */
+	public int insertBoardReply(BoardForm boardForm) throws Exception {
+		return sqlSession.insert(NAMESPACE + ".insertBoardReply", boardForm);
+	}
 }
