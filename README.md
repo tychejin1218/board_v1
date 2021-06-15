@@ -45,3 +45,5 @@
     - ###### https://tychejin.tistory.com/26
   - ##### [Spring] 게시판 만들기(17) - 페이징(Paging) 처리
     - ###### https://tychejin.tistory.com/27
+  - ##### [Spring] 게시판 만들기(18) - 계층형 게시판(답글쓰기) 적용
+    - ###### https://tychejin.tistory.com/28
