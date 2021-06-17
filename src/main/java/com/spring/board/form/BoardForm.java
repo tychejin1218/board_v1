@@ -1,9 +1,13 @@
 package com.spring.board.form;
  
 import java.util.Date;
+import java.util.List;
+ 
+import org.springframework.web.multipart.MultipartFile;
  
 public class BoardForm extends CommonForm {
  
+    List<MultipartFile> files;
     int board_seq;
     int board_parent_seq;
     int board_re_ref;
@@ -19,6 +23,15 @@ public class BoardForm extends CommonForm {
     String upd_user_id;
     Date upd_date;
     String search_type;
+    String board_file;
+ 
+    public List<MultipartFile> getFiles() {
+        return files;
+    }
+ 
+    public void setFiles(List<MultipartFile> files) {
+        this.files = files;
+    }
  
     public int getBoard_seq() {
         return board_seq;
@@ -26,17 +39,17 @@ public class BoardForm extends CommonForm {
  
     public void setBoard_seq(int board_seq) {
         this.board_seq = board_seq;
-    }   
-    
+    }
+ 
     public int getBoard_parent_seq() {
-		return board_parent_seq;
-	}
-
-	public void setBoard_parent_seq(int board_parent_seq) {
-		this.board_parent_seq = board_parent_seq;
-	}
-
-	public int getBoard_re_ref() {
+        return board_parent_seq;
+    }
+ 
+    public void setBoard_parent_seq(int board_parent_seq) {
+        this.board_parent_seq = board_parent_seq;
+    }
+ 
+    public int getBoard_re_ref() {
         return board_re_ref;
     }
  
@@ -138,5 +151,13 @@ public class BoardForm extends CommonForm {
  
     public void setSearch_type(String search_type) {
         this.search_type = search_type;
-    } 
+    }
+ 
+    public String getBoard_file() {
+        return board_file;
+    }
+ 
+    public void setBoard_file(String board_file) {
+        this.board_file = board_file;
+    }
 }
