@@ -47,3 +47,5 @@
     - ###### https://tychejin.tistory.com/27
   - ##### [Spring] 게시판 만들기(18) - 계층형 게시판(답글쓰기) 적용
     - ###### https://tychejin.tistory.com/28
+  - ##### [Spring] 게시판 만들기(19) - 파일 업로드(MultipartHttpServletRequest)
+    - ###### https://tychejin.tistory.com/29
