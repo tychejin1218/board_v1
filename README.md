@@ -49,3 +49,5 @@
     - ###### https://tychejin.tistory.com/28
   - ##### [Spring] 게시판 만들기(19) - 파일 업로드(MultipartHttpServletRequest)
     - ###### https://tychejin.tistory.com/29
+  - ##### [Spring] 게시판 만들기(20) - 파일 다운로드(BeanNameViewResolver)
+    - ###### https://tychejin.tistory.com/30
