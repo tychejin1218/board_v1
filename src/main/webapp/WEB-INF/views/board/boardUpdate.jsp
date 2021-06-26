@@ -59,6 +59,7 @@
     function getBoardDetailCallback(obj){
         
         var str = "";
+        var fileStr = "";
         
         if(obj != null){                                
                             
@@ -79,6 +80,36 @@
             $("#board_subject").val(boardSubject);            
             $("#board_content").val(boardContent);
             $("#board_writer").text(boardWriter);
+                        
+            var files    = obj.files;
+            var filesLen = files.length;
+            if(filesLen > 0){
+                
+                for(var a=0; a<filesLen; a++){
+                    
+                    var boardSeq    = files[a].board_seq;
+                    var fileNo         = files[a].file_no;
+                    var fileNameKey = files[a].file_name_key;
+                    var fileName     = files[a].file_name;
+                    var filePath     = files[a].file_path;
+                    var fileSize     = files[a].file_size;
+                    var remark         = files[a].remark;
+                    var delYn         = files[a].del_yn;
+                    var insUserId     = files[a].ins_user_id;
+                    var insDate     = files[a].ins_date;
+                    var updUserId     = files[a].upd_user_id;
+                    var updDate     = files[a].upd_date;
+                    
+                    fileStr += "<a href='/board/fileDownload?fileNameKey="+encodeURI(fileNameKey)+"&fileName="+encodeURI(fileName)+"&filePath="+encodeURI(filePath)+"'>" + fileName + "</a>";
+                    fileStr += "<button type='button' class='btn black ml15' style='padding:3px 5px 6px 5px;' onclick='javascript:setDeleteFile("+ boardSeq +", "+ fileNo +")'>X</button>";
+                }            
+                                
+            } else {
+                
+                fileStr = "<input type='file' id='files[0]' name='files[0]' value=''></td>";
+            }
+            
+            $("#file_td").html(fileStr);
             
         } else {            
             alert("등록된 글이 존재하지 않습니다.");
@@ -106,21 +137,25 @@
         
         var yn = confirm("게시글을 수정하시겠습니까?");        
         if(yn){
+        	
+        	var filesChk = $("input[name='files[0]']").val();
+            if(filesChk == ""){
+                $("input[name='files[0]']").remove();
+            }
                 
-            $.ajax({    
+            $("#boardForm").ajaxForm({
                 
-                url      : "/board/updateBoard",
-                data     : $("#boardForm").serialize(),
-                dataType : "JSON",
-                cache    : false,
-                async    : true,
-                type     : "POST",    
-                success  : function(obj) {
+                url     : "/board/updateBoard",
+                enctype : "multipart/form-data",
+                cache   : false,
+                async   : true,
+                type    : "POST",                         
+                success : function(obj) {
                     updateBoardCallback(obj);                
                 },           
-                error    : function(xhr, status, error) {}
+                error     : function(xhr, status, error) {}
                 
-            });
+            }).submit();
         }
     }
     
@@ -139,6 +174,16 @@
                 return;
             }
         }
+    }
+    
+    /** 게시판 - 삭제할 첨부파일 정보 */
+    function setDeleteFile(boardSeq, fileSeq){
+        
+        var deleteFile = boardSeq + "!" + fileSeq;        
+        $("#delete_file").val(deleteFile);
+                
+        var fileStr = "<input type='file' id='files[0]' name='files[0]' value=''>";        
+        $("#file_td").html(fileStr);        
     }
         
 </script>
@@ -168,10 +213,15 @@
                             <th>내용<span class="t_red">*</span></th>
                             <td colspan="3"><textarea id="board_content" name="board_content" cols="50" rows="5" class="textarea01"></textarea></td>
                         </tr>
+                        <tr>
+                            <th>첨부파일</th>
+                            <td colspan="3" id="file_td"><input type="file" id="files[0]" name="files[0]" value=""></td>
+                        </tr>
                     </tbody>
                 </table>    
                 <input type="hidden" id="board_seq"      name="board_seq"		value="${boardSeq}"/> <!-- 게시글 번호 -->
                 <input type="hidden" id="search_type"	 name="search_type"    	value="U"/> <!-- 조회 타입 - 상세(S)/수정(U) -->
+                <input type="hidden" id="delete_file"    name="delete_file"	    value=""/> <!-- 삭제할 첨부파일 -->
             </form>
             <div class="btn_right mt15">
                 <button type="button" class="btn black mr5" onclick="javascript:goBoardList();">목록으로</button>
