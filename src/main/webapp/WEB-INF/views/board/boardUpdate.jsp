@@ -17,6 +17,7 @@
  
 <!-- 공통 JavaScript -->
 <script type="text/javascript" src="/js/common/jquery.js"></script>
+<script type="text/javascript" src="/js/common/jquery.form.js"></script>
 <script type="text/javascript">
     
     $(document).ready(function(){        
