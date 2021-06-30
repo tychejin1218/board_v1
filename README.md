@@ -51,3 +51,5 @@
     - ###### https://tychejin.tistory.com/29
   - ##### [Spring] 게시판 만들기(20) - 파일 다운로드(BeanNameViewResolver)
     - ###### https://tychejin.tistory.com/30
+  - ##### [Spring] 게시판 만들기(21) - 게시글 수정(첨부파일 등록 및 삭제)
+    - ###### https://tychejin.tistory.com/133
