@@ -24,6 +24,7 @@ public class BoardForm extends CommonForm {
     Date upd_date;
     String search_type;
     String board_file;
+    String delete_file;
  
     public List<MultipartFile> getFiles() {
         return files;
@@ -160,4 +161,12 @@ public class BoardForm extends CommonForm {
     public void setBoard_file(String board_file) {
         this.board_file = board_file;
     }
+
+	public String getDelete_file() {
+		return delete_file;
+	}
+
+	public void setDelete_file(String delete_file) {
+		this.delete_file = delete_file;
+	}
 }

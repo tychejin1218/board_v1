@@ -106,8 +106,7 @@ public class BoardService {
  
         insertCnt = boardDao.insertBoard(boardForm);
  
-        List<BoardFileForm> boardFileList = getBoardFileInfo(boardForm);
- 
+        List<BoardFileForm> boardFileList = getBoardFileInfo(boardForm); 
         for (BoardFileForm boardFileForm : boardFileList) {
             boardDao.insertBoardFile(boardFileForm);
         }
@@ -194,9 +193,29 @@ public class BoardService {
  
         BoardDto boardDto = new BoardDto();
  
-        int deleteCnt = boardDao.updateBoard(boardForm);
+        int updateCnt = boardDao.updateBoard(boardForm);
+
+		String deleteFile = boardForm.getDelete_file();
+		if (!"".equals(deleteFile)) {
+
+			String[] deleteFileInfo = deleteFile.split("!");
+
+			int boardSeq = Integer.parseInt(deleteFileInfo[0]);
+			int fileNo = Integer.parseInt(deleteFileInfo[1]);
+
+			BoardFileForm deleteBoardFileForm = new BoardFileForm();
+			deleteBoardFileForm.setBoard_seq(boardSeq);
+			deleteBoardFileForm.setFile_no(fileNo);
+
+			boardDao.deleteBoardFile(deleteBoardFileForm);
+		}
+
+		List<BoardFileForm> boardFileList = getBoardFileInfo(boardForm);
+		for (BoardFileForm boardFileForm : boardFileList) {
+			boardDao.insertBoardFile(boardFileForm);
+		}
  
-        if (deleteCnt > 0) {
+        if (updateCnt > 0) {
             boardDto.setResult("SUCCESS");
         } else {
             boardDto.setResult("FAIL");
