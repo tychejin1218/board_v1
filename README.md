@@ -53,3 +53,5 @@
     - ###### https://tychejin.tistory.com/30
   - ##### [Spring] 게시판 만들기(21) - 게시글 수정(첨부파일 등록 및 삭제)
     - ###### https://tychejin.tistory.com/133
+  - ##### [Spring] 게시판 만들기(22) - MDC(Mapped Diagnostic Context) 설정
+    - ###### https://tychejin.tistory.com/143
